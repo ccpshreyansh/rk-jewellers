@@ -44,7 +44,9 @@ export default function HeroSilder() {
     emblaApi.on("select", onSelect);
     onSelect();
 
-    return () => emblaApi.off("select", onSelect);
+    return () => {
+      emblaApi.off("select", onSelect);
+    };
   }, [emblaApi]);
 
   return (

@@ -13,18 +13,34 @@ interface Category {
 
 interface Product {
   id: string;
-  name: string;
+  title: string;
   image: string;
   price: number;
   featured?: boolean;
+  weight?: number;
+  karat?: string;
 }
 
 
-export const fetchProductsByCategory = async (categoryId: string) => {
+
+export const fetchProductsByCategory = async (categoryId: string): Promise<Product[]> => {
   const q = query(collection(db, "products"), where("categoryId", "==", categoryId));
   const snapshot = await getDocs(q);
-  return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+  return snapshot.docs.map(doc => {
+    const data = doc.data();
+    return {
+      id: doc.id,
+      title: data.title || "Untitled",
+      image: data.image || "",
+      price: data.price || 0,
+      featured: data.featured || false,
+      weight: data.weight || 0,
+      karat: data.karat || "",
+    } as Product;
+  });
 };
+
 
 const ProductsPage = () => {
   const router = useRouter();
@@ -47,18 +63,26 @@ const ProductsPage = () => {
     }
   }, [selectedCategory]);
 
-  const loadCategories = async () => {
-    try {
-      const res = await fetchCategories();
-      setCategories(res);
-      if (!selectedCategory && res.length) {
-        setSelectedCategory(res[0].id);
-      }
-    } catch (err) {
-      console.log(err);
-      alert("Failed to fetch categories");
+const loadCategories = async () => {
+  try {
+    const res = await fetchCategories(); // returns { id: string }[]
+    
+    // Map to ensure each item has title
+    const categoriesWithTitle: Category[] = res.map((cat: any) => ({
+      id: cat.id,
+      title: cat.title || "Untitled", // fallback if title missing
+    }));
+
+    setCategories(categoriesWithTitle);
+
+    if (!selectedCategory && categoriesWithTitle.length) {
+      setSelectedCategory(categoriesWithTitle[0].id);
     }
-  };
+  } catch (err) {
+    console.log(err);
+    alert("Failed to fetch categories");
+  }
+};
 
   const loadProducts = async (categoryId: string) => {
     setLoading(true);

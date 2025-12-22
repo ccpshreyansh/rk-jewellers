@@ -18,21 +18,33 @@ export default function AdminMetalPrices() {
   const [loading, setLoading] = useState(false);
   const [lastUpdated, setLastUpdated] = useState<string | null>(null);
 
-  useEffect(() => {
-    loadPrices();
-  }, []);
-
-  const loadPrices = async () => {
-    const data = await getMetalPrices();
-    if (!data) return;
-
-    setGold14k(data.gold?.["14k"] || "");
-    setGold18k(data.gold?.["18k"] || "");
-    setGold22k(data.gold?.["22k"] || "");
-    setGold24k(data.gold?.["24k"] || "");
-    setSilver24k(data.silver?.["24k"] || "");
-    setLastUpdated(`${data.date} • ${data.time}`);
+  // Define the expected structure of your metal prices
+interface MetalPrices {
+  gold?: {
+    "14k"?: string | number;
+    "18k"?: string | number;
+    "22k"?: string | number;
+    "24k"?: string | number;
   };
+  silver?: {
+    "24k"?: string | number;
+  };
+  date?: string;
+  time?: string;
+  updatedAt?: number | null;
+}
+
+const loadPrices = async () => {
+  const data: MetalPrices | null = await getMetalPrices(); // allow null from service
+  if (!data) return;
+
+  setGold14k(data.gold?.["14k"]?.toString() || "");
+  setGold18k(data.gold?.["18k"]?.toString() || "");
+  setGold22k(data.gold?.["22k"]?.toString() || "");
+  setGold24k(data.gold?.["24k"]?.toString() || "");
+  setSilver24k(data.silver?.["24k"]?.toString() || "");
+  setLastUpdated(`${data.date} • ${data.time}`);
+};
 
   const handleSubmit = async () => {
     setLoading(true);
