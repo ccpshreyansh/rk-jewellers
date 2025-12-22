@@ -4,17 +4,18 @@ import Autoplay from "embla-carousel-autoplay";
 import styles from "./HeroSlider.module.css";
 
 const slides = [
-  {
-    desktop: "/images/slider5.png",
-    mobile: "/images/slider10.png",
-  },
+
    {
-    desktop: "/images/slider5.png",
+    desktop: "/images/slider21.png",
     mobile: "/images/slider1.png",
   },
    {
     desktop: "/images/slider5.png",
     mobile: "/images/slider2.png",
+  },
+  {
+    desktop: "/images/slider5.png",
+    mobile: "/images/slider7.png",
   },
   {
       desktop: "/images/slider4.png",
