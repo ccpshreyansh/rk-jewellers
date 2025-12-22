@@ -1,0 +1,58 @@
+.heroWrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.embla {
+  width: 100%;
+  height: 70vh;
+  max-height: 700px;
+}
+
+/* Mobile height */
+@media (max-width: 768px) {
+  .embla {
+    height: 45vh;
+  }
+}
+
+.emblaContainer {
+  display: flex;
+  height: 100%;
+}
+
+.emblaSlide {
+  flex: 0 0 100%;
+  height: 100%;
+}
+
+.emblaSlide picture,
+.emblaSlide img {
+  width: 100%;
+  height: 100%;
+}
+
+.emblaSlide img {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Dots */
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ccc;
+  transition: 0.3s;
+}
+
+.active {
+  background: #832729;
+}

@@ -1,0 +1,12 @@
+.embla {
+  position: relative;
+}
+
+.embla__container {
+  display: flex;
+}
+
+.embla__slide {
+  flex: 0 0 100%;
+  position: relative;
+}
