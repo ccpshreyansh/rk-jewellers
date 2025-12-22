@@ -128,7 +128,7 @@ const Collections = () => {
   transition={{ duration: 0.5, delay: 0.1 }}
   className="cursor-pointer group"
   onClick={() =>
-    router.push(`/productpage?type=${item.title}&catId=${item.id}`)
+    router.push(`/products?type=${item.title}&catId=${item.id}`)
   }
 >
   {/* Image Card */}

@@ -23,18 +23,20 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
         
         {/* Logo + Name */}
-        <div className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-3"><div className="flex items-center gap-3">
           <Image
             src="/rk_logo.png"
             alt="RK Jewellery"
             width={75}
             height={55}
+           
             className="rounded-full object-cover"
           />
           <h1 className="font-heading text-xl text-darkbrown tracking-wide">
             RK Jewellery
           </h1>
-        </div>
+        </div> </Link>
+        
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex items-center gap-8">
