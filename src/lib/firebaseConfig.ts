@@ -3,13 +3,13 @@ import { getFirestore } from 'firebase/firestore'
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBhfiGGg_AtwqvYAvqTxqhahdPETpYmLQo",
-  authDomain: "store-manager-7abe8.firebaseapp.com",
-  projectId: "store-manager-7abe8",
-  storageBucket: "store-manager-7abe8.firebasestorage.app",
-  messagingSenderId: "521187155132",
-  appId: "1:521187155132:web:a84eb345527a5287ed44b9",
-  measurementId: "G-VTV8TF972P"
+  apiKey: "AIzaSyAFHQ5Cz89n-_x6ujZDy-Btguyu7teYEog",
+  authDomain: "rk-jewellers-5a614.firebaseapp.com",
+  projectId: "rk-jewellers-5a614",
+  storageBucket: "rk-jewellers-5a614.firebasestorage.app",
+  messagingSenderId: "558173277218",
+  appId: "1:558173277218:web:b04d5f31075baaa2758e7b",
+  measurementId: "G-E8544P191W"
 };
 
 

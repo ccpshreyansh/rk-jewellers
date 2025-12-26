@@ -20,20 +20,21 @@ export default function CustomerReviewLuxury() {
   const [reviews, setReviews] = useState<Review[]>([]);
 
   useEffect(() => {
-    const fetchReviews = async () => {
-      try {
-        const res = await fetch(
-          "https://service-reviews-ultimate.elfsight.com/data/reviews?uris%5B%5D=ChIJTcusshwWCTkR3H4M7RpRF9Y&filter_content=text_required&min_rating=5&page_length=100&order=date"
-        );
-        const data: ApiResponse = await res.json();
-        setReviews(data.result.data.slice(0, 6));
-      } catch (err) {
-        console.error("Failed to fetch reviews:", err);
-      }
-    };
+  const fetchReviews = async () => {
+    try {
+      const res = await fetch(
+        "https://service-reviews-ultimate.elfsight.com/data/reviews?uris%5B%5D=eacbb61cb34f4683aba4f6c65c538b45&filter_content=text_required&min_rating=5&page_length=100&order=date"
+      );
 
-    fetchReviews();
-  }, []);
+      const data: ApiResponse = await res.json();
+      setReviews(data.result.data.slice(0, 6));
+    } catch (err) {
+      console.error("Failed to fetch reviews:", err);
+    }
+  };
+
+  fetchReviews();
+}, []);
 
   if (!reviews.length) return null;
 
